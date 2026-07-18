@@ -1,0 +1,29 @@
+class Solution {
+    public int longestNonRepeatingSubstring(String s) {
+        int[] lastSeen = new int[26];
+
+        for(int i=0;i<26; i++){
+            lastSeen[i] = -1;
+
+        }
+        int maxLength = 0;
+        int left = 0;
+
+        for(int right = 0; right < s.length(); right++){
+            int index = s.charAt(right) - 'a';
+
+            if(lastSeen[index] >= left){
+                left =lastSeen[index] + 1;
+
+            }
+            lastSeen[index] = right;
+            
+            maxLength = Math.max(maxLength, right - left + 1);
+            
+
+        }
+        return maxLength;
+        
+    }
+    
+}
