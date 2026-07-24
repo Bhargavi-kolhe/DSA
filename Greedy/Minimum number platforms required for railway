@@ -1,0 +1,29 @@
+class Solution {
+    public int findPlatform(int[] Arrival, int[] Departure) {
+        //your code goes here
+        int n = Arrival.length;
+        Arrays.sort(Arrival);
+        Arrays.sort(Departure);
+
+        int i = 0;
+        int j = 0;
+
+        int platforms = 0;
+        int maxPlatforms = 0;
+        while (i<n && j<n){
+            if(Arrival[i]<=Departure[j]){
+                platforms++;
+                i++;
+
+                maxPlatforms = Math.max(maxPlatforms, platforms);
+
+            }
+            else{
+                platforms--;
+                j++;
+            }
+        }
+        return maxPlatforms;
+
+    }
+}
