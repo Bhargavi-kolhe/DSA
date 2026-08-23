@@ -1,0 +1,28 @@
+class Solution {
+    public boolean sumGame(String num) {
+        int n = num.length();
+        int balance = 0;
+
+        for (int i = 0; i < n; i++) {
+            char c = num.charAt(i);
+
+            if (c == '?') {
+                if (i < n / 2) {
+                    balance += 9;
+                } else {
+                    balance -= 9;
+                }
+            } else {
+                int digit = c - '0';
+
+                if (i < n / 2) {
+                    balance += 2 * digit;
+                } else {
+                    balance -= 2 * digit;
+                }
+            }
+        }
+
+        return balance != 0;
+    }
+}
